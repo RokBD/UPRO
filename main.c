@@ -1618,3 +1618,56 @@ int main(void) {
 } */
 
 //  =====Vjezba 8 zadatak 24=====
+/*
+#include <stdio.h>
+#define MAKS 8
+
+int main(void) {
+    char s[MAKS + 1];
+    int i = 0, jeispravan = 1;
+    unsigned broj = 0;
+
+    printf("Upisite niz > ");
+    fgets(s, MAKS + 1, stdin);
+    s[MAKS] = '\0';
+
+    while (s[i] != '\0')
+        i++;
+    if (i > 0 && s[i - 1] == '\n')
+        s[--i] = '\0';
+    printf("Niz: %s\n", s);
+
+    i = 0;
+    while (s[i] != '\0' && jeispravan == 1) {
+        if (s[i] >= '0' && s[i] <= '9') {
+            broj = broj * 16 + s[i] - '0';
+        } else if (s[i] >= 'A' && s[i] <= 'F') {
+            broj = broj * 16 + s[i] - 'A' + 10;
+        } else {
+            jeispravan = 0;
+            printf("Neispravan znak a na poziciji %d.", i + 1);
+        }
+        i++;
+    }
+
+    if (jeispravan == 1) {
+        printf("Dekadski: %u", broj);
+    }
+
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 25=====
+
+#include <stdio.h>
+
+int main(void) {
+    unsigned n;
+
+    printf("Upisite dekadski broj > ");
+    scanf("%u", &n);
+
+    printf("Heksadekadski: %X", n);
+
+    return 0;
+}
