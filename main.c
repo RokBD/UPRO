@@ -1220,7 +1220,7 @@ int main (void) {
 } */
 
 //  =====Vjezba 7 zadatak 3=====
-/* 
+/*
 #include <stdio.h>
 
 int main(void) {
@@ -1269,7 +1269,7 @@ int main(void) {
 } */
 
 //  =====Vjezba 7 zadatak 4=====
-/* 
+/*
 #include <stdio.h>
 
 int main(void) {
@@ -1302,12 +1302,12 @@ int main(void) {
         }
         printf("\n");
     }
-    
+
     return 0;
 } */
 
 //  =====Vjezba 7 zadatak 5=====
-/* 
+/*
 #include <stdio.h>
 #define VELICINA 11
 
@@ -1335,12 +1335,12 @@ int main (void) {
         }
         printf("\n");
     }
-    
+
     return 0;
 } */
 
 //  =====Vjezba 7 zadatak 6=====
-/* 
+/*
 #include <stdio.h>
 
 int main (void) {
@@ -1348,14 +1348,14 @@ int main (void) {
 
     do {
         printf("Upisite m [4, 8] > ");
-        scanf("%d", &m); 
+        scanf("%d", &m);
     } while (m < 4 || m > 8);
 
     do {
         printf("Upisite n [5, 10] > ");
-        scanf("%d", &n); 
+        scanf("%d", &n);
     } while (n < 5 || n > 10);
-    
+
     int p[m][n];
 
     printf("Upisite %d x %d clanova >\n", m, n);
@@ -1380,12 +1380,12 @@ int main (void) {
     {
         printf("%5d", sumaPoStupcima[i]);
     }
-    
+
     return 0;
 } */
 
 //  =====Vjezba 7 zadatak 7=====
-/* 
+/*
 #include <stdio.h>
 
 int main(void) {
@@ -1422,7 +1422,7 @@ int main(void) {
         }
         printf("\n");
     }
-    
+
     return 0;
 } */
 
@@ -1464,7 +1464,7 @@ int main(void) {
 } */
 
 //  =====Vjezba 8 zadatak 17=====
-/* 
+/*
 #include <stdio.h>
 
 int main(void) {
@@ -1480,7 +1480,7 @@ int main(void) {
     return 0;
 } */
 //  =====Vjezba 8 zadatak 18=====
-/* 
+/*
 #include <stdio.h>
 
 int main (void) {
@@ -1503,3 +1503,118 @@ int main (void) {
     return 0;
 } */
 
+//  =====Vjezba 8 zadatak 19=====
+/*
+#include <stdio.h>
+
+int main(void) {
+    char i, j;
+
+    for (i = 'a'; i < 'v'; i++) {
+        printf("%c. ", i - 32);
+        for (j = i; j < i + 6; j++) {
+            printf("%c ", j);
+        }
+        printf(".%c\n", j - 33);
+    }
+
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 20=====
+/*
+#include <stdio.h>
+#define DULJINA 10
+
+int main(void) {
+    char rijec[DULJINA + 1];
+    int i, j, min;
+
+    printf("Upisite %d znakova > ", DULJINA);
+
+    for (i = 0; i < DULJINA + 1; i++) {
+        scanf("%c", &rijec[i]);
+    }
+    rijec[DULJINA] = '\0';
+
+    printf("Original :%s\n", rijec);
+
+    for (i = 0; i < DULJINA - 1; i++) {
+        min = i + 1;
+        for (j = i + 2; j < DULJINA; j++) {
+            if (rijec[j] < rijec[min]) {
+                min = j;
+            }
+        }
+
+        if (rijec[min] < rijec[i]) {
+            char pomocna = rijec[i];
+            rijec[i] = rijec[min];
+            rijec[min] = pomocna;
+        }
+    }
+
+    printf("Sortirani:%s", rijec);
+
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 21=====
+/*
+#include <stdio.h>
+
+int main(void) {
+    char c;
+    c = 'A' + '0';
+    printf("%d\n", c);
+    printf("%c\n", c);
+    printf("%c\n", 'D' - 'A' + '0');
+    printf("%d\n", 'D' - 'A' + '0');
+    printf("%d\n", '7' - '5');
+    printf("%d\n", '7' - 5);
+    printf("%c\n", '7' - 5);
+    printf("%d\n", '0' % 10);
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 22=====
+/*
+#include <stdio.h>
+
+int main(void) {
+    unsigned long long n;
+
+    printf("Upisite prirodni broj u granicama [1, 4250000000] > ");
+    scanf("%llu", &n);
+
+    printf("%llu * %llu = %llu", n, n, n * n);
+
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 23=====
+/*
+#include <stdio.h>
+#define MAKS 20
+
+int main(void) {
+    char niz[MAKS + 1];
+    int i, najveci = 0;
+
+    printf("Upisite niz > ");
+    fgets(niz, MAKS + 1, stdin);
+
+    printf("Niz: %s", niz);
+
+    for (i = 1; i < MAKS; i++) {
+        if (niz[i] > niz[najveci]) {
+            najveci = i;
+        }
+    }
+
+    printf("\nNajveca ASCII vrijednost: %d", niz[najveci]);
+
+    return 0;
+} */
+
+//  =====Vjezba 8 zadatak 24=====
