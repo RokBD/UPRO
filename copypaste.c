@@ -566,3 +566,12 @@ int main(void) {
 //
 // printf("Planckova konstanta:\n%e\n%10.3e\n%10.4e\n",
 //        planckConst, planckConst, planckConst);
+
+// KOPIRANJE STRINGA
+
+// i = 0;
+// while (src[i] != '\0') {
+//     dest[i] = src[i];
+//     i++;
+// }
+// dest[i] = '\0';

@@ -264,7 +264,7 @@ int main(void) {
 } */
 
 // ===== Meduispit 1.1. Zadatak 2 =====
-/* 
+/*
 #include <stdio.h>
 
 int main(void) {
@@ -315,4 +315,318 @@ int main(void) {
 } */
 
 // ===== Meduispit 1.1. Zadatak 3 =====
+/*
+#include <stdio.h>
+#define MAKS 50
+#define CLANOVI 5
 
+int main(void) {
+    struct lego_s {
+        char ime[MAKS + 1];
+        int p[CLANOVI];
+    };
+
+    struct lego_s lego[MAKS] = {
+        {"FireworkGuy", {14822018, 13562018, 43222017, 52112017, 34222018}},
+        {"WrestlingChampion",
+         {93212015, 34122015, 34772012, 22222014, 13452013}},
+        {"CactusGirl", {32332018, 93212015, 34772012, 52112017, 34882016}},
+        {"Dobby", {98762018, 97652018, 34772018, 32452016, 34212017}},
+        {"Cheerleader", {12322010, 14562010, 32462010, 23762010, 98792010}},
+        {"Zombie", {56432010, 76482010, 47822010, 78652010, 45322010}},
+        {"Forestman", {23652010, 34762009, 64832008, 57532010, 54882009}},
+        {"Mariachi/MaracaMan",
+         {23672010, 93212010, 32452016, 54882010, 34672010}}};
+
+    int i = 8;
+
+    do {
+        printf("Unos %d. figure:\n", i + 1);
+        printf("Naziv: ");
+        scanf("%50s", lego[i].ime);
+        if (i < MAKS && lego[i].ime[0] != '-') {
+            printf("Serijski brojevi: ");
+            for (int j = 0; j < 5; j++) {
+                scanf("%d", &lego[i].p[j]);
+            }
+            i++;
+        }
+    } while (i < MAKS && lego[i].ime[0] != '-');
+
+    int provjera, nemaFigure = 1;
+
+    printf("Serijski broj dijela za provjeru: ");
+    scanf("%d", &provjera);
+    printf("Figure koje sadrze dio %d su:", provjera);
+
+    for (int j = 0; j < i; j++) {
+        for (int k = 0; k < CLANOVI; k++) {
+            if (provjera / 10000 == lego[j].p[k] / 10000) {
+                nemaFigure = 0;
+                printf("\n%s", lego[j].ime);
+            }
+        }
+    }
+
+    if (nemaFigure == 1)
+        printf("\nNema figura!");
+
+    return 0;
+} */
+
+// ===== Meduispit 1.1. Zadatak 4 =====
+/*
+#include <stdio.h>
+#define MAKS 32
+
+unsigned obrnuti(unsigned broj) {
+    unsigned obrnuti = 0;
+
+    for (int i = 0; i < MAKS; i++) {
+        unsigned mask = 1u << i;
+        if (broj & mask) {
+            unsigned pomak = 1u << (MAKS - 1 - i);
+            obrnuti = obrnuti | pomak;
+        }
+    }
+
+    return obrnuti;
+}
+
+int main(void) {
+    unsigned n;
+
+    printf("Unesite broj > ");
+    scanf("%u", &n);
+
+    printf("\nBroj binarno: ");
+    for (int i = MAKS - 1; i >= 0; i--) {
+        unsigned mask = 1u << i;
+        if (mask & n) {
+            printf("1");
+        } else {
+            printf("0");
+        }
+    }
+
+    unsigned b;
+    b = obrnuti(n);
+
+    printf("\nObrnuti binarno: ");
+    for (int i = MAKS - 1; i >= 0; i--) {
+        unsigned mask = 1u << i;
+        if (mask & b) {
+            printf("1");
+        } else {
+            printf("0");
+        }
+    }
+
+    printf("\nObrnuti dekadski: %u", b);
+
+    return 0;
+} */
+
+// ===== Meduispit 2.1. Zadatak 1 =====
+/*
+#include <stdio.h>
+
+int main(void) {
+    int z, n, i, sum = 0;
+
+    printf("Upisite znamenku > ");
+    scanf("%d", &z);
+    int prvi = 0;
+    for (n = 999; n >= 100; n--) {
+        int prost = 1;
+        for (i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                prost = 0;
+            }
+        }
+        if (prost == 1 && (n / 100 == z || n / 10 % 10 == z || n % 10 == z)) {
+            if (prvi == 0) {
+                printf("%d", n);
+            } else {
+                printf(" %d", n);
+            }
+            sum += n;
+            prvi = 1;
+        }
+    }
+
+    printf("\nZbroj: %d", sum);
+
+    return 0;
+} */
+
+// ===== Meduispit 2.1. Zadatak 2 =====
+/*
+#include <stdio.h>
+
+int main(void) {
+    int n, i;
+    printf("Upisi kapacitet (velicinu) polja > ");
+    scanf("%d", &n);
+
+    printf("Upisi %d brojeva 0-9 > ", n);
+
+    int polje[n];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &polje[i]);
+    }
+
+    int min = polje[0];
+    int imax, imin;
+    for (i = 1; i < n; i++) {
+        if (polje[i] < min) {
+            min = polje[i];
+            imin = i;
+        }
+    }
+
+    int max = polje[0];
+    for (i = 1; i < n; i++) {
+        if (polje[i] > max) {
+            max = polje[i];
+            imax = i;
+        }
+    }
+    if (imin > imax) {
+        for (i = imin; i >= imax; i--) {
+            printf("%d", polje[i]);
+        }
+    } else {
+        for (i = imin; i <= imax; i++) {
+            printf("%d", polje[i]);
+        }
+    }
+
+    return 0;
+} */
+
+// ===== Meduispit 2.1. Zadatak 3 =====
+/*
+#include <stdio.h>
+#define MAKS 100
+
+int main(void) {
+    char s1[MAKS + 1], s2[MAKS + 1];
+
+    printf("Upisite s1 > ");
+    fgets(s1, MAKS + 1, stdin);
+
+    printf("Upisite s2 > ");
+    fgets(s2, MAKS + 1, stdin);
+
+    int i = 0, j = 0;
+
+    while (s1[i] != '\0')
+        i++;
+    if (i > 0 && s1[i - 1] == '\n')
+        s1[--i] = '\0';
+
+    while (s2[j] != '\0')
+        j++;
+    if (j > 0 && s2[j - 1] == '\n')
+        s2[--j] = '\0';
+
+    int isti = 1, i1 = 0, i2 = 0;
+    char print1[MAKS + 1], print2[MAKS + 1];
+    i = 0;
+    while (s1[i] != '\0') {
+        print1[i] = s1[i];
+        i++;
+    }
+    print1[i] = '\0';
+    i = 0;
+    while (s2[i] != '\0') {
+        print2[i] = s2[i];
+        i++;
+    }
+    print2[i] = '\0';
+
+    while ((s1[i1] != '\0' || s2[i2] != '\0') && isti == 1) {
+        while (s1[i1] == ' ')
+            i1++;
+        while (s2[i2] == ' ')
+            i2++;
+
+        if (s1[i1] >= 'A' && s1[i1] <= 'Z') {
+            s1[i1] += 32;
+        }
+        if (s2[i2] >= 'A' && s2[i2] <= 'Z') {
+            s2[i2] += 32;
+        }
+
+        if (s1[i1] > s2[i2]) {
+            isti = 0;
+            printf("(%s)>(%s)", print1, print2);
+            printf("\nRazlika na indeksima: (s1:%d, s2:%d)", i1, i2);
+        }
+
+        if (s1[i1] < s2[i2]) {
+            isti = 0;
+            printf("(%s)<(%s)", print1, print2);
+            printf("\nRazlika na indeksima: (s1:%d, s2:%d)", i1, i2);
+        }
+
+        if (s1[i1] != '\0')
+            i1++;
+        if (s2[i2] != '\0')
+            i2++;
+    }
+
+    if (isti == 1) {
+        printf("(%s)=(%s)", print1, print2);
+    }
+
+    return 0;
+} */
+
+// ===== Meduispit 2.1. Zadatak 4 =====
+/*
+#include <stdio.h>
+
+int main(void) {
+    int n, i, j, poz = 0, neg = 0;
+
+    do {
+        printf("Ucitajte red matrice> ");
+        scanf("%d", &n);
+    } while (!(n >= 1 && n <= 10));
+
+    int polje[n][n];
+
+    printf("Ucitajte %d elemenata cjelobrojne matrice> ", n * n);
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            scanf("%d", &polje[i][j]);
+            if (polje[i][j] > 0)
+                poz++;
+            else if (polje[i][j] < 0)
+                neg++;
+        }
+    }
+
+    printf("\nUcitana matrica:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%4d", polje[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("Matrica rotirana ulijevo:\n");
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%4d", polje[j][n - i - 1]);
+        }
+        printf("\n");
+    }
+
+    printf("Pozitivnih: %d", poz);
+    printf("\nNegativnih: %d", neg);
+
+    return 0;
+} */
