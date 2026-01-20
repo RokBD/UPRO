@@ -1656,18 +1656,3 @@ int main(void) {
 
     return 0;
 } */
-
-//  =====Vjezba 8 zadatak 25=====
-
-#include <stdio.h>
-
-int main(void) {
-    unsigned n;
-
-    printf("Upisite dekadski broj > ");
-    scanf("%u", &n);
-
-    printf("Heksadekadski: %X", n);
-
-    return 0;
-}

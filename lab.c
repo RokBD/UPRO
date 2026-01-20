@@ -438,7 +438,7 @@ int main(void) {
 } */
 
 // =====Lab 4 Zadatak 3====
-/* 
+/*
 #include <stdio.h>
 #define MAX_LEN 16
 
@@ -454,7 +454,7 @@ int main(void) {
          unsigned short mask = 1u << i;
         if (mask & udaljenost) {
             brojac ++;
-        } 
+        }
     }
 
     printf("Hammingova udaljenost: %d", brojac);
@@ -463,7 +463,7 @@ int main(void) {
 } */
 
 // =====Lab 4 Zadatak 4====
-/* 
+/*
 #include <stdio.h>
 #define MAX_LEN 16
 
@@ -515,7 +515,7 @@ int main(void) {
 } */
 
 // =====Lab 4 Zadatak 5====
-/* 
+/*
 #include <stdio.h>
 #include <math.h>
 
@@ -524,7 +524,7 @@ double e_approx(int n) {
 
     for (int i = 1; i <= n; i++) {
         double faktorijel = 1;
-        
+
         for (int j = 2; j <= i; j++) {
             faktorijel *= j;
         }
@@ -548,7 +548,7 @@ int main (void) {
 } */
 
 // =====Lab 4 Zadatak 6====
-/* 
+/*
 #include <stdio.h>
 #include <math.h>
 
@@ -572,14 +572,15 @@ int main (void) {
     scanf("%f %f %f", &a, &b, &c);
 
     razlika = fabsf(median(a, b ,c) - ((a + b + c) / 3.f));
-    
-    printf("Apsolutna vrijednost razlike mediana i srednje vrijednosti je: %.3f", razlika);
+
+    printf("Apsolutna vrijednost razlike mediana i srednje vrijednosti je:
+%.3f", razlika);
 
     return 0;
 } */
 
 // =====Lab 4 Zadatak 7====
-/* 
+/*
 #include <stdio.h>
 
 int djelitelj(int a, int b) {
@@ -614,13 +615,13 @@ int main(void) {
 } */
 
 // =====Lab 4 Zadatak 8====
-/* 
+/*
 #include <stdio.h>
 #include <math.h>
 
 int savrsen_kvadrat(int n) {
-    int korijen = (int)sqrt(n);  
-    return (korijen * korijen == n); 
+    int korijen = (int)sqrt(n);
+    return (korijen * korijen == n);
 }
 
 int factorial(int n) {
@@ -654,3 +655,211 @@ int main(void) {
 
     return 0;
 } */
+
+// =====Lab 6 Zadatak 1====
+/*
+void duplicirajSamoglasnike(char *ulaz, char *izlaz) {
+
+    while (*ulaz != '\0') {
+        char c = *ulaz;
+
+        int samoglasnik =
+            (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+             c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+
+        if (samoglasnik) {
+            *izlaz++ = c;
+            *izlaz++ = c;
+        } else {
+            *izlaz++ = c;
+        }
+
+        ulaz++;
+    }
+
+    *izlaz = '\0';
+} */
+
+// =====Lab 6 Zadatak 2====
+/*
+#include <math.h>
+
+void stddev(float *a, int n, float *std) {
+    int i;
+    float sum = 0.0f;
+
+    for (i = 0; i < n; i++) {
+        sum += a[i];
+    }
+
+    float mean = sum / (float)n;
+
+    float sq = 0.0f;
+    for (i = 0; i < n; i++) {
+        float d = a[i] - mean;
+        sq += d * d;
+    }
+
+    *std = (float)sqrt(sq / (float)n);
+}
+
+int IndexOfMaxdev(float *a, int n, int m) {
+    int r;
+    int best = 0;
+    float bestStd;
+
+    stddev(a + 0 * m, m, &bestStd);
+
+    for (r = 1; r < n; r++) {
+        float s;
+        stddev(a + r * m, m, &s);
+
+        if (s > bestStd) {        // samo '>' da u slučaju jednakog ostane manji
+indeks bestStd = s; best = r;
+        }
+    }
+
+    return best;
+} */
+
+// =====Lab 6 Zadatak 3====
+/*
+void delCharFromName(struct person_s *s, char c) {
+    char *src = s->name;   // čita iz originalnog stringa
+    char *dst = s->name;   // piše novi string na isto mjesto
+
+    while (*src != '\0') {
+        if (*src != c) {
+            *dst = *src;
+            dst++;
+        }
+        src++;
+    }
+
+    *dst = '\0';  // obavezno završiti string
+} */
+
+// =====Lab 6 Zadatak 4====
+/*
+int zajednickiDjelitelj(int *matrica, int m, int n) {
+    int i, j;
+    int total = m * n;
+
+    for (i = 0; i < total; i++) {
+        int d = matrica[i];
+
+        if (d == 0) continue;          // ne može biti djelitelj
+        if (d < 0) d = -d;             // radimo s pozitivnim djeliteljem
+
+        int ok = 1;
+        for (j = 0; j < total; j++) {
+            if (matrica[j] % d != 0) { // nije djeljivo
+                ok = 0;
+                break;
+            }
+        }
+
+        if (ok) return d;
+    }
+
+    return 1;
+}
+
+void podijeli(int *matrica, int m, int n, int *rezultat) {
+    int total = m * n;
+    int d = zajednickiDjelitelj(matrica, m, n);
+
+    for (int i = 0; i < total; i++) {
+        rezultat[i] = matrica[i] / d;
+    }
+}
+ */
+
+// =====Lab 6 Zadatak 5====
+/*
+void transponiraj(int* src, int* dst, int n, int m)
+{
+    int i, j;
+
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < m; j++) {
+            dst[j*n + i] = src[i*m + j];
+        }
+    }
+} */
+
+// =====Lab 6 Zadatak 6====
+/*
+void prebrojiPojave(char *niz, char znak, int *rezultat)
+{
+    int count = 0;
+
+
+    if (znak >= 'A' && znak <= 'Z') {
+        znak = znak + ('a' - 'A');
+    }
+
+    while (*niz != '\0') {
+        char c = *niz;
+
+
+        if (c >= 'A' && c <= 'Z') {
+            c = c + ('a' - 'A');
+        }
+
+        if (c == znak) {
+            count++;
+        }
+
+        niz++;
+    }
+
+    *rezultat = count;
+}
+*/
+
+// =====Lab 6 Zadatak 7====
+/*
+void obrni(char *src, char *dst)
+{
+    int len = 0;
+    int i;
+
+
+    while (src[len] != '\0') {
+        len++;
+    }
+
+
+    for (i = 0; i < len; i++) {
+        dst[i] = src[len - 1 - i];
+    }
+
+
+    dst[len] = '\0';
+}
+ */
+
+// =====Lab 6 Zadatak 8====
+/*
+int dot_produkt(int *a, int *b, int n)
+{
+    int i;
+    int sum = 0;
+
+    for (i = 0; i < n; i++) {
+        sum += a[i] * b[i];
+    }
+
+    return sum;
+}
+
+void mat_vec_produkt(int *X, int *a, int n, int *ret)
+{
+    int i;
+
+    for (i = 0; i < n; i++) {
+        ret[i] = dot_produkt(X + i * n, a, n);
+    }
+}
+ */
