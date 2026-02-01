@@ -450,8 +450,10 @@ int main(void) {
     fread(a, sizeof(a), 1, bin);
 
     int a1, a2, g1, g2;
+    char dummy[11];
 
-    while (fscanf(txt, "*[^#]#%d#%d#%d#%d", &a1, &a2, &g1, &g2) == 5) {
+    while (fscanf(txt, "%10s#%d#%d#%d#%d", dummy, &a1, &a2, &g1, &g2) == 5) {
+
         a[a1 - 1].ukGolPostigao += g1;
         a[a1 - 1].ukGolPrimio += g2;
         a[a2 - 1].ukGolPostigao += g2;
