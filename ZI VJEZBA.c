@@ -421,7 +421,7 @@ int main(void) {
 } */
 
 // ===== Završni ispit 2024/25 - prvi termin Zadatak 4 =====
-
+/*
 typedef struct {
     int sifDrzava;            // Šifra države (1–32)
     char nazivDrzava[20 + 1]; // Naziv države (maks. 20 znakova)
@@ -469,6 +469,101 @@ int main(void) {
 
     fclose(txt);
     fclose(bin);
+
+    return 0;
+} */
+
+// ===== Završni ispit 2023/24 - drugi termin Zadatak 1 =====
+/*
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+unsigned int checkPassword(char *password, int minLength, int minUppercase,
+                           int minLowercase, int minDigits,
+                           int minSpecialChars) {
+    int len, upper = 0, lower = 0, dig = 0, sc = 0, zbroj = 0;
+    char *z = "!@$%^&*+#";
+
+    len = strlen(password);
+    for (int i = 0; i < len; i++) {
+        if (isupper(*(password + i))) {
+            upper++;
+        } else if (islower(*(password + i))) {
+            lower++;
+        } else if (isdigit(*(password + i))) {
+            dig++;
+        } else if (strchr(z, *(password + i)) != NULL) {
+            sc++;
+        }
+    }
+    if (len < minLength)
+        zbroj += 1;
+    if (upper < minUppercase)
+        zbroj += 2;
+    if (lower < minLowercase)
+        zbroj += 4;
+    if (dig < minDigits)
+        zbroj += 8;
+    if (sc < minSpecialChars)
+        zbroj += 16;
+
+    return zbroj;
+}
+
+int main() {
+    int minLength, minUppercase, minLowercase, minDigits, minSpecialChars;
+    char password[100];
+
+    printf("Unesite minLength, minUppercase, minLowercase, minDigits, "
+           "minSpecialChars: ");
+    scanf("%d %d %d %d %d", &minLength, &minUppercase, &minLowercase,
+          &minDigits, &minSpecialChars);
+    printf("Unesite lozinku: ");
+    scanf("%s", password);
+
+    printf("%d", checkPassword(password, minLength, minUppercase, minLowercase,
+                               minDigits, minSpecialChars));
+    return 0;
+} */
+
+// ===== Završni ispit 2023/24 - drugi termin Zadatak 2 =====
+
+#include <stdio.h>
+#include <stdlib.h>
+
+/* OVDJE trebate napisati definiciju funkcije slucajniClan */
+
+int main(void) {
+    /* ucitavanje dimenzija polja */
+    int m, n;
+    printf("Upisite broj redaka i stupaca > ");
+    scanf("%d %d", &m, &n);
+
+    /* ucitavanje clanova polja */
+    int polje[m][n];
+    printf("Upisite clanove polja > ");
+    for (int i = 0; i < m; ++i)
+        for (int j = 0; j < n; ++j)
+            scanf("%d", &polje[i][j]);
+
+    /* ucitavanje sjemena za generator u varijablu sjeme */
+    unsigned int sjeme;
+    printf("Upisite sjeme > ");
+
+    scanf("%u", &sjeme);
+
+    srand(sjeme);
+
+    /* OVDJE trebate napisati definiciju varijable u koju
+       ce se pohraniti rezultat funkcije */
+
+    /* OVDJE trebate pozvati funkciju slucajniClan */
+
+    /* OVDJE trebate izracunati sumu retka i sumu stupca */
+
+    /* OVDJE trebate na zaslon ispisati rezultat */
 
     return 0;
 }
